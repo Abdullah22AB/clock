@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>digital clock</title>
+    
+    <style>
+        body{
+    background: #333;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.clock{
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    font-size: 70px;
+    font-weight:bold;
+
+    margin: auto;
+    font-family:'Times New Roman', Times, serif;
+    backdrop-filter:inherit;
+
+
+}
+
+    </style>
+</head>
+<body>
+    <div class="clock"></div>
+    <script >function colok(){
+        let date = new Date();
+        let hours=date.getHours();
+        let minutes =date.getMinutes();
+        let seconds =date.getSeconds();
+        let flag='AM'
+        
+        if(hours ==0){//نهارا 
+            hours=12
+    
+        }
+        if(hours>12){// ظهرا
+        hours = hours -12;
+        flag='pm'
+        }
+        if(hours<10)hours="0"+hours;
+        if(minutes<10)minutes='0'+minutes;
+        if(seconds<10)seconds='0'+seconds;
+        document.querySelector('.clock').innerHTML=`${hours} : ${minutes} :${seconds} : ${flag}`;
+        setTimeout(function(){
+            colok()
+        },1000)
+    }
+    colok()</script>
+    
+</body>
+</html>
